@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val searchEditText = findViewById<EditText>(R.id.SearchEditText)
-        val userReoEditText = findViewById<EditText>(R.id.userRepoEditText)
+        val userRepoEditText = findViewById<EditText>(R.id.userRepoEditText)
 
         val button = findViewById<Button>(R.id.searchButton)
         button.setOnClickListener {
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         val viewRepoButton = findViewById<Button>(R.id.userRepoButton)
         viewRepoButton.setOnClickListener{
             val intent = Intent(this, SearchResultActivity::class.java)
-            intent.putExtra("username", userReoEditText.text.toString())
+            intent.putExtra("username", userRepoEditText.text.toString())
             startActivity(intent)
         }
     }

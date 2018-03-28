@@ -18,7 +18,7 @@
     <TextView
         android:id="@+id/repoTextView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="16dp"
         android:layout_marginStart="10dp"
         android:text="@string/project_name"
         app:layout_constraintBottom_toBottomOf="parent"
