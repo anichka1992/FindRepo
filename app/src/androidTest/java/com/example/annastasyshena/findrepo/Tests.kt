@@ -5,6 +5,7 @@ import android.support.test.runner.AndroidJUnit4
 import com.example.annastasyshena.findrepo.R.id.repoListView
 import com.example.annastasyshena.findrepo.Screens.Search
 import com.example.annastasyshena.findrepo.Screens.SearchResultScreen
+import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -15,7 +16,6 @@ import org.junit.runner.RunWith
  */
 
 
-
 @RunWith(AndroidJUnit4::class)
 class Tests {
     @Rule
@@ -23,27 +23,31 @@ class Tests {
     val activity = ActivityTestRule<MainActivity>(MainActivity::class.java)
 
 
-@Test
-fun repoSearch() {
+    @Test
+    fun repoSearch() {
         val repoSearch = Search()
         repoSearch.checkHintUserField("View User's Repos")
-        val text = "repo"
+        val text = "egg"
         repoSearch.lookForRepo(text)
         repoSearch.clickSearchButton()
-        repoSearch.wait(globalTimeout)
         val searchResult = SearchResultScreen()
         searchResult.clickListItem(repoListView, 0)
+        val textFromUrl = searchResult.getTextFromUrl()
+        Assert.assertTrue("URL does not contain your search word $text", textFromUrl.contains(text))
 
     }
 
     @Test
     fun userSearch() {
         val userSearch = Search()
-        val userName = "Anna"
+        val userName = "anna"
         userSearch.lookForUser(userName)
         userSearch.clickUserButton()
-        userSearch.wait(globalTimeout)
         val searchResult = SearchResultScreen()
+        searchResult.clickListItem(repoListView, 0)
+        val textFromUrl = searchResult.getTextFromUrl()
+        Assert.assertTrue("URL does not contain the user $userName you search for", textFromUrl.contains(userName))
+
     }
 
     @Test
@@ -54,10 +58,6 @@ fun repoSearch() {
         search.lookForUser(userName)
         search.clickUserButton()
         val searchList = SearchResultScreen()
-        searchList.wait(1000)
         searchList.snackbarAssertion(expectedText)
     }
-
-
-
 }

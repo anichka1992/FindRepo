@@ -7,7 +7,6 @@ import android.support.test.espresso.action.ViewActions
 import android.support.test.espresso.action.ViewActions.typeText
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.*
-import com.example.annastasyshena.findrepo.BaseTest
 import com.example.annastasyshena.findrepo.R
 
 
@@ -16,7 +15,7 @@ import com.example.annastasyshena.findrepo.R
  */
 
 
-open class FindRepoScreen : BaseTest() {
+open class FindRepoScreen : BaseScreen() {
 
     fun typeText(id: Int, text: String): ViewInteraction = onView(withId(id)).perform(typeText(text))
 
@@ -39,5 +38,4 @@ class Search : FindRepoScreen() {
     fun clickUserButton() = apply { clickButton(R.id.userRepoButton) }
 
     fun wait(milliseconds: Long): ViewInteraction = Espresso.onView(isRoot()).perform(waitFor(milliseconds))
-
 }
