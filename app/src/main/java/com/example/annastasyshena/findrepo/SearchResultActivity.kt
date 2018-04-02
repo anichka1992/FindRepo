@@ -99,5 +99,6 @@ class RepoAdapter(context: Context?, resource: Int, objects: List<Repo>?) : Arra
         textView.text = repo.full_name
 
         return repoView
+        
     }
 }
