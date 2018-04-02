@@ -22,7 +22,6 @@ class Tests {
     @JvmField
     val activity = ActivityTestRule<MainActivity>(MainActivity::class.java)
 
-
     @Test
     fun repoSearch() {
         val repoSearch = Search()

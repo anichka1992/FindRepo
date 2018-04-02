@@ -3,12 +3,8 @@ package com.example.annastasyshena.findrepo
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.test.espresso.IdlingResource
-import android.support.test.espresso.idling.CountingIdlingResource
 import android.widget.Button
 import android.widget.EditText
-import java.util.concurrent.atomic.AtomicInteger
-
 
 class MainActivity : AppCompatActivity() {
 
