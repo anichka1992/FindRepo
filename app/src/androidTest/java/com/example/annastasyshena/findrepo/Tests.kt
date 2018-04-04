@@ -22,7 +22,7 @@ class Tests {
     @JvmField
     val activity = ActivityTestRule<MainActivity>(MainActivity::class.java)
 
-    @Test
+ //   @Test
     fun repoSearch() {
         val repoSearch = Search()
         repoSearch.checkHintUserField("View User's Repos")
