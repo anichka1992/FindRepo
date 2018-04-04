@@ -22,7 +22,7 @@ class Tests {
     @JvmField
     val activity = ActivityTestRule<MainActivity>(MainActivity::class.java)
 
- //   @Test
+    @Test
     fun repoSearch() {
         val repoSearch = Search()
         repoSearch.checkHintUserField("View User's Repos")
@@ -30,6 +30,7 @@ class Tests {
         repoSearch.lookForRepo(text)
         repoSearch.clickSearchButton()
         repoSearch.wait(globalTimeout)
+        Thread.sleep(2000)
         val searchResult = SearchResultScreen()
         searchResult.clickListItem(repoListView, 0)
         val textFromUrl = searchResult.getTextFromUrl()
