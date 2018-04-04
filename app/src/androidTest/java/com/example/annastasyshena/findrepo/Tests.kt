@@ -29,6 +29,7 @@ class Tests {
         val text = "egg"
         repoSearch.lookForRepo(text)
         repoSearch.clickSearchButton()
+        repoSearch.wait(globalTimeout)
         val searchResult = SearchResultScreen()
         searchResult.clickListItem(repoListView, 0)
         val textFromUrl = searchResult.getTextFromUrl()
