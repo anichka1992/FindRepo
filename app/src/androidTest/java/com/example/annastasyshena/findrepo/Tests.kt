@@ -30,7 +30,6 @@ class Tests {
         repoSearch.lookForRepo(text)
         repoSearch.clickSearchButton()
         repoSearch.wait(globalTimeout)
-        Thread.sleep(2000)
         val searchResult = SearchResultScreen()
         searchResult.clickListItem(repoListView, 0)
         val textFromUrl = searchResult.getTextFromUrl()
@@ -44,7 +43,6 @@ class Tests {
         val userName = "anna"
         userSearch.lookForUser(userName)
         userSearch.clickUserButton()
-        Thread.sleep(2000)
         val searchResult = SearchResultScreen()
         searchResult.clickListItem(repoListView, 0)
         val textFromUrl = searchResult.getTextFromUrl()
@@ -52,14 +50,13 @@ class Tests {
 
     }
 
-    //@Test
+    @Test
     fun snackBarTest() {
         val search = Search()
         val userName = "Does not exist..."
         val expectedText = "User not found :( Go back and try again!"
         search.lookForUser(userName)
         search.clickUserButton()
-        Thread.sleep(2000)
         search.wait(2000)
         val searchList = SearchResultScreen()
         searchList.snackbarAssertion(expectedText)
