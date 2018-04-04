@@ -44,6 +44,7 @@ class Tests {
         val userName = "anna"
         userSearch.lookForUser(userName)
         userSearch.clickUserButton()
+        Thread.sleep(2000)
         val searchResult = SearchResultScreen()
         searchResult.clickListItem(repoListView, 0)
         val textFromUrl = searchResult.getTextFromUrl()
@@ -58,6 +59,7 @@ class Tests {
         val expectedText = "User not found :( Go back and try again!"
         search.lookForUser(userName)
         search.clickUserButton()
+        Thread.sleep(2000)
         search.wait(2000)
         val searchList = SearchResultScreen()
         searchList.snackbarAssertion(expectedText)
