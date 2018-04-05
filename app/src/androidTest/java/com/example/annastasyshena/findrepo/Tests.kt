@@ -10,7 +10,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-
 /**
  * Created by annastasyshena on 3/22/18.
  */
@@ -29,7 +28,6 @@ class Tests {
         val text = "egg"
         repoSearch.lookForRepo(text)
         repoSearch.clickSearchButton()
-        repoSearch.wait(globalTimeout)
         val searchResult = SearchResultScreen()
         searchResult.clickListItem(repoListView, 0)
         val textFromUrl = searchResult.getTextFromUrl()
@@ -40,11 +38,11 @@ class Tests {
     @Test
     fun userSearch() {
         val userSearch = Search()
-        val userName = "anna"
+        val userName = "john"
         userSearch.lookForUser(userName)
         userSearch.clickUserButton()
         val searchResult = SearchResultScreen()
-        searchResult.clickListItem(repoListView, 0)
+        searchResult.clickListItem(repoListView, 3)
         val textFromUrl = searchResult.getTextFromUrl()
         Assert.assertTrue("URL does not contain the user $userName you search for", textFromUrl.contains(userName))
 
@@ -57,7 +55,6 @@ class Tests {
         val expectedText = "User not found :( Go back and try again!"
         search.lookForUser(userName)
         search.clickUserButton()
-        search.wait(2000)
         val searchList = SearchResultScreen()
         searchList.snackbarAssertion(expectedText)
     }

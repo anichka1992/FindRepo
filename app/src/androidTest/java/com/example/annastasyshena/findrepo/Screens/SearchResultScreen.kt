@@ -1,6 +1,7 @@
 package com.example.annastasyshena.findrepo.Screens
 
 import android.support.test.espresso.*
+import android.support.test.espresso.Espresso.onData
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.assertion.ViewAssertions.matches
@@ -8,6 +9,7 @@ import android.support.test.espresso.matcher.ViewMatchers.*
 import org.hamcrest.CoreMatchers.*
 import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
 import android.support.test.uiautomator.UiSelector
+import com.example.annastasyshena.findrepo.R.id.repoListView
 import com.example.annastasyshena.findrepo.globalTimeout
 import junit.framework.Assert
 
