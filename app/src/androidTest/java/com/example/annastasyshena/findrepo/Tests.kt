@@ -14,7 +14,6 @@ import org.junit.runner.RunWith
  * Created by annastasyshena on 3/22/18.
  */
 
-
 @RunWith(AndroidJUnit4::class)
 class Tests {
     @Rule
@@ -29,10 +28,10 @@ class Tests {
         repoSearch.lookForRepo(text)
         repoSearch.clickSearchButton()
         val searchResult = SearchResultScreen()
+        searchResult.viewExist()
         searchResult.clickListItem(repoListView, 0)
         val textFromUrl = searchResult.getTextFromUrl()
         Assert.assertTrue("URL does not contain your search word $text", textFromUrl.contains(text))
-
     }
 
     @Test
@@ -42,10 +41,10 @@ class Tests {
         userSearch.lookForUser(userName)
         userSearch.clickUserButton()
         val searchResult = SearchResultScreen()
-        searchResult.clickListItem(repoListView, 3)
+        searchResult.viewExist()
+        searchResult.clickListItem(repoListView, 15)
         val textFromUrl = searchResult.getTextFromUrl()
         Assert.assertTrue("URL does not contain the user $userName you search for", textFromUrl.contains(userName))
-
     }
 
     @Test
@@ -56,6 +55,7 @@ class Tests {
         search.lookForUser(userName)
         search.clickUserButton()
         val searchList = SearchResultScreen()
+        searchList.existOfSnackBar()
         searchList.snackbarAssertion(expectedText)
     }
 }

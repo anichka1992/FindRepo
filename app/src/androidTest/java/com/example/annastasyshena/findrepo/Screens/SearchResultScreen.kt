@@ -1,7 +1,6 @@
 package com.example.annastasyshena.findrepo.Screens
 
 import android.support.test.espresso.*
-import android.support.test.espresso.Espresso.onData
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.assertion.ViewAssertions.matches
@@ -9,7 +8,6 @@ import android.support.test.espresso.matcher.ViewMatchers.*
 import org.hamcrest.CoreMatchers.*
 import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
 import android.support.test.uiautomator.UiSelector
-import com.example.annastasyshena.findrepo.R.id.repoListView
 import com.example.annastasyshena.findrepo.globalTimeout
 import junit.framework.Assert
 
@@ -18,18 +16,23 @@ import junit.framework.Assert
  */
 class SearchResultScreen : BaseScreen() {
 
-    private val listObject = uiDevice.findObject(UiSelector().resourceId("com.example.annastasyshena.findrepo:id/repoListView"))
+    private val listObject = uiDevice.findObject(UiSelector().resourceId("com.example.annastasyshena.findrepo:id/repoTextView"))
+    private val snackBar = uiDevice.findObject(UiSelector().resourceId("com.example.annastasyshena.findrepo:id/snackbar_text"))
     private val urlObject = uiDevice.findObject(UiSelector().resourceId("com.android.chrome:id/url_bar"))
 
-    init {
+    fun viewExist() {
         Assert.assertTrue("Expected elements are not displayed", listObject.waitForExists(globalTimeout))
+    }
+
+    fun existOfSnackBar() {
+        Assert.assertTrue("Expected elements are not displayed", snackBar.waitForExists(2000))
     }
 
     fun getTextFromUrl() = urlObject.text
 
     fun clickListItem(id: Int, position: Int) {
         Espresso.onData(anything())
-                .inAdapterView(allOf(withId(id)))
+                .inAdapterView(anyOf(withId(id)))
                 .atPosition(position).perform(click())
     }
 
